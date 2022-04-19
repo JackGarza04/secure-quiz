@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block title %}Results{% endblock %}
+
+{% block content %}
+	<h1>You answered:</h1>
+
+	<ul>
+		<li> Question 1: {{ session['answer1'] }} </li>
+		<li> Question 2: {{ session['answer2'] }} </li>
+		<li> Question 3: {{ session['answer3'] }} </li>
+		<li> Question 4: {{ session['answer4'] }} </li>
+		<li> Question 5: {{ session['answer5'] }} </li>
+	</ul>
+
+{% endblock %}

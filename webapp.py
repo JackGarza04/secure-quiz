@@ -9,9 +9,10 @@ app = Flask(__name__)
 # This is something random you generate.  
 # For more info see: https://flask.palletsprojects.com/en/1.1.x/config/#SECRET_KEY
 
-app.secret_key=os.environ["2u8VI6VypGAvdSBpFEPsVw"]; #This is an environment variable.  
-                                                     #The value should be set in Heroku (Settings->Config Vars).  
-                                                     #To run locally, set in env.sh and include that file in gitignore so the secret key is not made public.
+# 2u8VI6VypGAvdSBpFEPsVw
+app.secret_key=os.environ["SECRET_KEY"]; #This is an environment variable.  
+                                         #The value should be set in Heroku (Settings->Config Vars).  
+                                         #To run locally, set in env.sh and include that file in gitignore so the secret key is not made public.
 
 
 @app.route('/')
@@ -23,7 +24,7 @@ def retake():
     session.clear() #clears variable values and creates a new session
     return redirect(url_for('renderMain')) # url_for('renderMain') could be replaced with '/'
 
-@app.route('/question1')
+@app.route('/question1',methods=['GET','POST'])
 def renderQuestion1():
     return render_template('question1.html')
 

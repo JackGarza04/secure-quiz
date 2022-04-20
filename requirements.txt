@@ -7,7 +7,6 @@ itsdangerous
 Jinja2
 lxml
 MarkupSafe
-migrate
 pbr
 Pillow
 PyGithub

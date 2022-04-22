@@ -3,14 +3,28 @@
 {% block title %}Results{% endblock %}
 
 {% block content %}
-	<h1>You answered:</h1>
-
-	<ul>
-		<li> Question 1: {{ session['answer1'] }} </li>
-		<li> Question 2: {{ session['answer2'] }} </li>
-		<li> Question 3: {{ session['answer3'] }} </li>
-		<li> Question 4: {{ session['answer4'] }} </li>
-		<li> Question 5: {{ session['answer5'] }} </li>
-	</ul>
-
+	<div id="parent">
+		<div id="child1" class="block center">
+			<h1>You answered:</h1>
+				<p class="text" >
+					<b>Question 1:</b> {{ session['answer1'] }} <br> {{ response1 }}
+				</p>
+				<p>
+					<b>Question 2:</b> {{ session['answer2'] }} <br> {{ response2 }}
+				</p>
+				<p>
+					<b>Question 3:</b> {{ session['answer3'] }} <br> {{ response3 }}
+				</p>
+				<p>
+					<b>Question 4:</b> {{ session['answer4'] }} <br> {{ response4 }}
+				</p>
+				<p>
+					<b>Question 5:</b> {{ session['answer5'] }} <br> {{ response5 }}
+				</p>
+			<h1>
+				<b>{{ letterGrade }} ({{ percentage }}%)</b>
+			</h3>
+		</div>
+	</div>
+	
 {% endblock %}

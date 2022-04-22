@@ -3,14 +3,20 @@
 {% block title %}Question 5{% endblock %}
 
 {% block content %}
-	<h1>Question 5: </h1>
+	<div id="parent">
+		<div id="child1" class="block center">
+			<h1>Question 5:</h1>
 
-	<form action={{ url_for("renderResults") }} method="POST">
-		<b>Solve: &int;<i>5dx</i></b>
-		<br>
-		<input type="text" name="answer5">
-		<input type="submit" value="Submit">
-	</form> 
+			<form action={{ url_for("renderResults") }} method="POST">
+				<b>Solve: &int;<i>5dx</i></b>
+				<br>
+				<input type="text" name="answer5">
+				<br><br>
+				<input type="submit" value="See Results"></input>
+			</form> 
+		</div>
+	</div>
+
 
 
 {% endblock %}

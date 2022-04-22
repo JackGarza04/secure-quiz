@@ -7,14 +7,15 @@
 
 <body>
 
-<div id="content">{% block content %}{% endblock %}</div>
+	{% block content %}{% endblock %}
 
-<div id="footer">
-  
-	<a href="/retake">Start over</a>
-
-</div>
-
+	<div id="parent">
+		<div id="child1" class="block center">
+			<form action="/retake">
+				<input type="submit" value="Retake Quiz"></input>
+			</form>
+		</div>
+	</div>
 </body>
 
 </html>

@@ -1,10 +1,20 @@
 {% extends "layout.html" %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Math Quiz{% endblock %}
 
 {% block content %}
-	<h1>Home</h1>
-
-	<li><a href="/question1">Get started</a></li>
+	<h1 class="heading">Math Quiz</h1>
 	
+	<div id="parent">
+		<div id="child2" class="block center">
+			<p class="text">
+				Online Math quiz, enter answers with spaces in between terms and basic text form math notation, enter "2&sup2;+2x" as "2^2 + 2x" <br> Use "C" as the arbitrary constant for integration, and enter terms in logical order. Begin the quiz by licking "Begin Quiz" below!
+			</p>
+		</div>
+		<div id="child2" class="block center">
+			<form action="/question1">
+				<input type="submit" value="Begin Quiz"></input>
+			</form>
+		</div>
+	</div>
 {% endblock %}

@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}Question 10{% endblock %}
+
+{% block content %}
+	<div id="parent">
+		<div id="child1" class="block center">
+			<h1>Question 10:</h1>
+
+			<form action={{ url_for("renderResults") }} method="POST">
+				<b>For a particular function <i>g</i>, we know <i>g'</i>(5) = 2 and <i>g</i>(5) = -3. Write an equation for the line tangent to <i>g</i> at <i>x</i> = 5 in terms of <i>x</i> and <i>y</i> in slope-intercept form.</b>
+				<br>
+				<input type="text" name="answer10">
+				<br><br>
+				<input type="submit" value="See Results"></input>
+			</form> 
+		</div>
+	</div>
+
+
+
+{% endblock %}

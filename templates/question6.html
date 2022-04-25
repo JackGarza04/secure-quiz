@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}Question 6{% endblock %}
+
+{% block content %}
+	<div id="parent">
+		<div id="child1" class="block center">
+			<h1>Question 6:</h1>
+
+			<form action={{ url_for("renderQuestion7") }} method="POST">
+				<b>Solve: <sup>d</sup>&frasl;<sub>dx</sub>(<i>sin(2x)</i>)</b>
+				<br>
+				<input type="text" name="answer6">
+				<br><br>
+				<input type="submit" value="Next"></input>
+			</form> 
+		</div>
+	</div>
+
+
+
+{% endblock %}

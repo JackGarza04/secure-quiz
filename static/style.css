@@ -8,6 +8,51 @@ h1 {
 	font-weight: 500;
 }
 
+div#footer {
+	text-align: center;
+	vertical-align: top;
+    margin-top: 3em;
+    padding: 1em;
+}
+
+.heading {
+	font-family: 'Open Sans', sans-serif;
+	text-align: center;
+	vertical-align: top;
+	font-size: 300%;
+	margin-top: 100px;
+	margin-bottom: 50px;
+	font-weight: 500;
+}
+
+.green {
+	color: #90ee90;
+}
+
+.yellow {
+	color: #EACE09;
+}
+
+.orange {
+	color: #FFA500;
+}
+
+.darkOrange {
+	color: #CC5500;
+}
+
+.red {
+	color: #A73333;
+}
+
+.correct {
+	color: #00A86B;
+}
+
+.wrong {
+	color: #ED2939;
+}
+
 .text {
 	font-family: 'Open Sans', sans-serif;
 	text-align: center;

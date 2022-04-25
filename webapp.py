@@ -11,7 +11,8 @@ app = Flask(__name__)
 
 # 2u8VI6VypGAvdSBpFEPsVw
 # \/ Answer Key in order \/
-# ["2x^2 + 2x + C", "36x^2 + 14x + 5", "6x^3 + 3x^2 + 3x + C", "3e^x + C", "5x + C"]
+# ["2x^2 + 2x + C", "36x^2 + 14x + 5", "6x^3 + 3x^2 + 3x + C", "3e^x + C", "5x + C", "2cos(2x)", "6x^8", "16x^3 + 8x", "e^(x + 1)", "y = 2x - 13"]
+
 
 app.secret_key=os.environ["SECRET_KEY"]; #This is an environment variable.  
                                          #The value should be set in Heroku (Settings->Config Vars).  
@@ -51,13 +52,38 @@ def renderQuestion5():
     session["answer4"]=request.form['answer4']
     return render_template('question5.html')
     
+@app.route('/question6',methods=['GET','POST'])
+def renderQuestion6():
+    session["answer5"]=request.form['answer5']
+    return render_template('question6.html')
+    
+@app.route('/question7',methods=['GET','POST'])
+def renderQuestion7():
+    session["answer6"]=request.form['answer6']
+    return render_template('question7.html')
+    
+@app.route('/question8',methods=['GET','POST'])
+def renderQuestion8():
+    session["answer7"]=request.form['answer7']
+    return render_template('question8.html')
+
+@app.route('/question9',methods=['GET','POST'])
+def renderQuestion9():
+    session["answer8"]=request.form['answer8']
+    return render_template('question9.html')
+
+@app.route('/question10',methods=['GET','POST'])
+def renderQuestion10():
+    session["answer9"]=request.form['answer9']
+    return render_template('question10.html')
+
 @app.route('/results' ,methods=['GET','POST'])
 def renderResults():
-    session["answer5"]=request.form['answer5']
-    return render_template('results.html', response1 = calculate_response(1), response2 = calculate_response(2), response3 = calculate_response(3), response4 = calculate_response(4), response5 = calculate_response(5), percentage = calculate_percentage(), letterGrade = calculate_letter_grade())
+    session["answer10"]=request.form['answer10']
+    return render_template('results.html', response1 = calculate_response(1), response2 = calculate_response(2), response3 = calculate_response(3), response4 = calculate_response(4), response5 = calculate_response(5), response6 = calculate_response(6), response7 = calculate_response(7), response8 = calculate_response(8), response9 = calculate_response(9), response10 = calculate_response(10), style1 = assign_response_css(1), style2 = assign_response_css(2), style3 = assign_response_css(3), style4 = assign_response_css(4), style5 = assign_response_css(5), style6 = assign_response_css(6), style7 = assign_response_css(7), style8 = assign_response_css(8), style9 = assign_response_css(9), style10 = assign_response_css(10), percentage = calculate_percentage(), letterGrade = calculate_letter_grade(), finalResult = final_result_style())
     
 def calculate_response(num):
-    answer_key = ["2x^2 + 2x + C", "36x^2 + 14x + 5", "6x^3 + 3x^2 + 3x + C", "3e^x + C", "5x + C"]
+    answer_key = ["2x^2 + 2x + C", "36x^2 + 14x + 5", "6x^3 + 3x^2 + 3x + C", "3e^x + C", "5x + C", "2cos(2x)", "6x^8", "16x^3 + 8x", "e^(x + 1)", "y = 2x - 13"]
     response = ""
     
     if "answer" + str(num) in session:
@@ -66,19 +92,48 @@ def calculate_response(num):
         else:
             response = "Incorrect"
     return response
+    
+def assign_response_css(num):
+    answer_key = ["2x^2 + 2x + C", "36x^2 + 14x + 5", "6x^3 + 3x^2 + 3x + C", "3e^x + C", "5x + C", "2cos(2x)", "6x^8", "16x^3 + 8x", "e^(x + 1)", "y = 2x - 13"]
+    style_snippit = ""
+
+    if "answer" + str(num) in session:
+        if session[("answer" + str(num))].replace(" ", "") == answer_key[num - 1].replace(" ", ""):
+            style_snippit = style_snippit + Markup('correct')
+        else:
+            style_snippit = style_snippit + Markup('wrong')
+    return style_snippit
+
+def final_result_style():
+    result = ""
+    if calculate_letter_grade() == "A+" or calculate_letter_grade() == "A" or calculate_letter_grade() == "A-":
+        result = result + Markup('class="green"')
+    elif calculate_letter_grade() == "B+" or calculate_letter_grade() == "B" or calculate_letter_grade() == "B-":
+        result = result + Markup('class="yellow"')
+    elif calculate_letter_grade() == "C+" or calculate_letter_grade() == "C" or calculate_letter_grade() == "C-":
+        result = result + Markup('class="orange"')
+    elif calculate_letter_grade() == "D+" or calculate_letter_grade() == "D":
+        result = result + Markup('class="dark orange"')
+    elif calculate_letter_grade() == "F":
+        result = result + Markup('class="red"')
+    else:
+        pass
+       
+    return result
+
 
 def calculate_percentage():
-    answer_key = ["2x^2 + 2x + C", "36x^2 + 14x + 5", "6x^3 + 3x^2 + 3x + C", "3e^x + C", "5x + C"]
+    answer_key = ["2x^2 + 2x + C", "36x^2 + 14x + 5", "6x^3 + 3x^2 + 3x + C", "3e^x + C", "5x + C", "2cos(2x)", "6x^8", "16x^3 + 8x", "e^(x + 1)", "y = 2x - 13"]
     percentage = 0.0
     
-    for i in range(1,6):
+    for i in range(1,11):
         if "answer" + str(i) in session:
             if session[("answer" + str(i))].replace(" ", "") == answer_key[i - 1].replace(" ", ""):
                 percentage += 1
             else:
                 pass
                 
-    percentage = int((percentage / 5) * 100)
+    percentage = int((percentage / 10) * 100)
     return percentage
     
 def calculate_letter_grade():

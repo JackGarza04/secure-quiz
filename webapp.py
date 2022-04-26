@@ -24,7 +24,7 @@ def renderMain():
     return render_template('index.html')
 
 @app.route('/retake')
-def retake():
+def retake():    
     session.clear() #clears variable values and creates a new session
     return redirect(url_for('renderMain'))
 
@@ -34,52 +34,82 @@ def renderQuestion1():
 
 @app.route('/question2',methods=['GET','POST'])
 def renderQuestion2():
-    session["answer1"]=request.form['answer1']
+    if "answer1" not in session:
+        session["answer1"]=request.form['answer1']
+    else:
+        pass
     return render_template('question2.html')
 
 @app.route('/question3',methods=['GET','POST'])
 def renderQuestion3():
-    session["answer2"]=request.form['answer2']
+    if "answer2" not in session:
+        session["answer2"]=request.form['answer2']
+    else:
+        pass
     return render_template('question3.html')
     
 @app.route('/question4',methods=['GET','POST'])
 def renderQuestion4():
-    session["answer3"]=request.form['answer3']
+    if "answer3" not in session:
+        session["answer3"]=request.form['answer3']
+    else:
+        pass
     return render_template('question4.html')
 
 @app.route('/question5',methods=['GET','POST'])
 def renderQuestion5():
-    session["answer4"]=request.form['answer4']
+    if "answer4" not in session:
+        session["answer4"]=request.form['answer4']
+    else:
+        pass
     return render_template('question5.html')
     
 @app.route('/question6',methods=['GET','POST'])
 def renderQuestion6():
-    session["answer5"]=request.form['answer5']
+    if "answer5" not in session:
+        session["answer5"]=request.form['answer5']
+    else:
+        pass
     return render_template('question6.html')
     
 @app.route('/question7',methods=['GET','POST'])
 def renderQuestion7():
-    session["answer6"]=request.form['answer6']
+    if "answer6" not in session:
+        session["answer6"]=request.form['answer6']
+    else:
+        pass
     return render_template('question7.html')
     
 @app.route('/question8',methods=['GET','POST'])
 def renderQuestion8():
-    session["answer7"]=request.form['answer7']
+    if "answer7" not in session:
+        session["answer7"]=request.form['answer7']
+    else:
+        pass
     return render_template('question8.html')
 
 @app.route('/question9',methods=['GET','POST'])
 def renderQuestion9():
-    session["answer8"]=request.form['answer8']
+    if "answer8" not in session:
+        session["answer8"]=request.form['answer8']
+    else:
+        pass
     return render_template('question9.html')
 
 @app.route('/question10',methods=['GET','POST'])
 def renderQuestion10():
-    session["answer9"]=request.form['answer9']
+    if "answer9" not in session:
+        session["answer9"]=request.form['answer9']
+    else:
+        pass
     return render_template('question10.html')
 
 @app.route('/results' ,methods=['GET','POST'])
 def renderResults():
-    session["answer10"]=request.form['answer10']
+    if "answer10" not in session:
+        session["answer10"]=request.form['answer10']
+    else:
+        pass
     return render_template('results.html', response1 = calculate_response(1), response2 = calculate_response(2), response3 = calculate_response(3), response4 = calculate_response(4), response5 = calculate_response(5), response6 = calculate_response(6), response7 = calculate_response(7), response8 = calculate_response(8), response9 = calculate_response(9), response10 = calculate_response(10), style1 = assign_response_css(1), style2 = assign_response_css(2), style3 = assign_response_css(3), style4 = assign_response_css(4), style5 = assign_response_css(5), style6 = assign_response_css(6), style7 = assign_response_css(7), style8 = assign_response_css(8), style9 = assign_response_css(9), style10 = assign_response_css(10), percentage = calculate_percentage(), letterGrade = calculate_letter_grade(), finalResult = final_result_style())
     
 def calculate_response(num):
@@ -88,9 +118,9 @@ def calculate_response(num):
     
     if "answer" + str(num) in session:
         if session[("answer" + str(num))].replace(" ", "") == answer_key[num - 1].replace(" ", ""):
-            response = "Correct"
+            response = "Correct!"
         else:
-            response = "Incorrect"
+            response = "Incorrect!"
     return response
     
 def assign_response_css(num):
@@ -121,7 +151,6 @@ def final_result_style():
        
     return result
 
-
 def calculate_percentage():
     answer_key = ["2x^2 + 2x + C", "36x^2 + 14x + 5", "6x^3 + 3x^2 + 3x + C", "3e^x + C", "5x + C", "2cos(2x)", "6x^8", "16x^3 + 8x", "e^(x + 1)", "y = 2x - 13"]
     percentage = 0.0
@@ -132,7 +161,7 @@ def calculate_percentage():
                 percentage += 1
             else:
                 pass
-                
+
     percentage = int((percentage / 10) * 100)
     return percentage
     
